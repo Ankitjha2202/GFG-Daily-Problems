@@ -1,0 +1,34 @@
+class Solution{
+public:
+    //Function to count subarrays with sum equal to 0.
+    long long int findSubarray(vector<long long int> &arr, int n ) {
+       // To store the count.
+    int count = 0;
+    
+    // To store the count sum.
+    unordered_map<int, int> map;
+    map[0] = 1;
+    
+    // To store the sum while traversing.
+    int localSum = 0;
+    
+    // Find all subarrays.
+    for(int i = 0; i < n; ++i) {
+        
+        // Update sum.
+        localSum += arr[i];
+        
+        // Check if sum is already present.
+        if(map.find(localSum) != map.end()) {
+            
+            // Update count.
+            count += map[localSum];
+        }
+        
+        // Update map.
+        map[localSum]++;
+    }
+    
+    return count;
+    }
+};
