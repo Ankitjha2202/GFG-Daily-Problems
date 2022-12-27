@@ -1,0 +1,15 @@
+long long maxArea(long long a[], int N)
+{
+   long long max_area = 0;
+   int left = 0, right = N - 1;
+    while (left < right) {
+        long long temp=(right-left)*min(a[right],a[left]);
+        max_area=max(max_area,temp);
+        if (a[left] < a[right]) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    return max_area;
+}
