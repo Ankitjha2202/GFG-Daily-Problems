@@ -1,0 +1,23 @@
+class Solution {
+  public:
+    // Function to find largest subtree sum.
+    int recursive(Node* root,int &maxi){
+        if(root==NULL){
+            return 0;
+        }
+        int l=recursive(root->left,maxi);
+        int r=recursive(root->right,maxi);
+        int curr=root->data+l+r;
+        maxi=max(curr,maxi);
+        return curr;
+    }
+    int findLargestSubtreeSum(Node* root)
+    {
+       if(!root){
+           return NULL;
+       }
+       int maxi=INT_MIN;
+       recursive(root,maxi);
+       return maxi;
+    }
+};
