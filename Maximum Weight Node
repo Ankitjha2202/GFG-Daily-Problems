@@ -1,0 +1,22 @@
+class Solution
+{
+  public:
+  int maxWeightCell(int n, vector<int> Edge)
+  {
+     vector<int> temp(n,0);
+     for(int i=0;i<n;i++){
+         if(Edge[i]!=-1){
+             temp[Edge[i]]+=i;
+         }
+     }
+     int maxi=INT_MIN;
+     int ans=0;
+     for(int i=0;i<n;i++){
+         if(temp[i]>=maxi){
+             ans=i;
+             maxi=temp[i];
+         }
+     }
+     return ans;
+  }
+};
