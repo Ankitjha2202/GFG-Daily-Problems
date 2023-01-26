@@ -1,0 +1,34 @@
+class Solution
+{
+    public:
+    //Function to perform case-specific sorting of strings.
+    string caseSort(string s, int n)
+    {
+        string str_lowers;
+        string str_uppers;
+        
+        for (int i=0; i<n; ++i)
+        {
+            if(isupper(s[i]))
+                str_uppers.push_back(s[i]);
+            else
+                str_lowers.push_back(s[i]);
+        }
+    
+        sort(begin(str_lowers), end(str_lowers));
+        sort(begin(str_uppers), end(str_uppers));
+    
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while (k < n)
+        {
+            if(isupper(s[k]))
+                s[k] = str_uppers[i++];
+            else 
+                s[k] = str_lowers[j++];
+            k++;
+        }
+        return s;
+    }
+};
