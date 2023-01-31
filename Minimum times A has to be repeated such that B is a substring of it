@@ -1,0 +1,23 @@
+
+class Solution {
+  public:
+    int minRepeats(string A, string B) {
+        int n=A.size();
+        int m=B.size();
+        string ans=A;
+        int count=1;
+        while(ans.size()<B.size()){
+            ans+=A;
+            count++;
+        }
+        if(ans.find(B)!=-1){
+            return count;
+        }
+        ans+=A;
+        count++;
+        if(ans.find(B)!=-1){
+            return count;
+        }
+        return -1;
+    }
+};
