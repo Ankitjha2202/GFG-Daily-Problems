@@ -1,0 +1,23 @@
+
+class Solution{
+  public:
+  #define ll long long int
+  vector<long long int> countZero(int N, int K, vector<vector<int>>& arr){
+    int m=arr[0].size();
+    unordered_set<int> row;
+    unordered_set<int> col;
+    vector<ll> ans(K,0);
+    ll n =N;
+    ll total_zero=n*n;
+    ll total_one,r,c;
+    for(int i=0;i<K;i++) {
+        row.insert(arr[i][0]);
+        col.insert(arr[i][1]);
+        r=row.size();
+        c=col.size();
+        total_one = ((r+c)*n) - (r*c);
+        ans[i]=total_zero - total_one;
+    }
+    return ans;
+  }
+};
