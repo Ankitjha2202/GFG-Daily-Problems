@@ -1,0 +1,21 @@
+
+class Solution{
+public:
+    int maxInstance(string s){
+        int n=s.size();
+        unordered_map<char,int> mp;
+        for(auto &it:s){
+            mp[it]++;
+        }
+        int mini=INT_MAX;
+        string ans="balloon";
+        for(int i=0;i<ans.size();i++){
+            if(ans[i]=='l' || ans[i]=='o'){
+                mp[ans[i]]=mp[ans[i]]/2;
+            }
+            mini=min(mini,mp[ans[i]]);
+            mp[ans[i]]=2*mp[ans[i]];
+        }
+        return mini;
+    }
+};
