@@ -1,0 +1,18 @@
+class Solution {
+  public:
+    int getMinimumDays(int n,string s, vector<int> &p) {
+        int ans=0;
+        for(int i=0;i<n;i++){
+            if((p[i]>0 && s[p[i]]==s[p[i]-1])||(p[i]+1<n && s[p[i]]==s[p[i]+1])){
+                s[p[i]]='?';
+                ans=i+1;
+            }
+        }
+        return ans;
+        //  aabb
+        //  2130
+        //  a?bb
+        //  a??b
+         
+    }
+};
