@@ -1,0 +1,114 @@
+
+class Solution{
+public:
+bool is(int n)
+
+    {
+
+        if(n==1)
+
+            return false;
+
+        for(int i=2;i*i<=n;i++)
+
+        {
+
+            if(n%i==0)
+
+                return false;
+
+        }
+
+        return true;
+
+    }
+
+    
+
+    int ans(int n)
+
+    {
+
+        if(n==1)
+
+            return 2;
+
+            
+
+        int first=0;
+
+        int second=0;
+
+        
+
+        for(int i=n;i>=1;i--)
+
+        {
+
+            if(is(i))
+
+            {
+
+                first=i;
+
+                break;
+
+            }
+
+        }
+
+        
+
+        for(int i=n;i<=n*n;i++)
+
+        {
+
+            if(is(i))
+
+            {
+
+                second=i;
+
+                break;
+
+            }
+
+        }
+
+        
+
+        int one=n-first;
+
+        int two=second-n;
+
+        
+
+        if(one<=two)
+
+            return first;
+
+        return second;
+
+    }
+
+    
+
+    Node *primeList(Node *head)
+
+    {
+
+        Node *temp=head;
+
+        while(temp!=NULL)
+
+        {
+
+            temp->val=ans(temp->val);
+
+            temp=temp->next;
+
+        }
+
+        return head;    
+    }
+};
