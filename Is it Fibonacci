@@ -1,0 +1,26 @@
+
+class Solution {
+  public:
+    long long solve(int n, int k, vector<long long> arr) {
+         
+        long long l = 0,sum = 0;
+
+        for(auto it:arr) sum+=it;
+
+        arr.push_back(sum);
+
+        
+
+        for(int i=k ;i<n ;i++){
+
+            sum-=arr[l++];
+
+            sum +=arr[i];
+
+            arr.push_back(sum);  // 0 1 2 3
+
+        }
+
+        return arr[n-1];
+    }
+};
