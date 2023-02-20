@@ -1,0 +1,27 @@
+class Solution{   
+public:
+long long int mod=1e9+7;
+    int countPaths(int n){
+        if(n==1){
+            return 0;
+        }
+        if(n==2){
+            return 3;
+        }
+        if(n==3){
+            return 6;
+        }
+        if(n==4){
+            return 21;
+        }
+        vector<long long int> dp(n+1,0);
+        dp[1]=0;
+        dp[2]=3;
+        dp[3]=6;
+        dp[4]=21;
+        for(long long int i=5;i<=n;i++){
+            dp[i]=((2*dp[i-1])%mod + (dp[i-2]*3)%mod)%mod;
+        }
+        return dp[n];
+    }
+};
