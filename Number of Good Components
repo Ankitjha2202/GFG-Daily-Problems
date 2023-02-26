@@ -1,0 +1,59 @@
+void dfs(vector<int>&vist,vector<vector<int>>& adj,int &count,int &sum,int node )
+
+    {
+
+        vist[node]=1;
+
+        for(auto it : adj[node])
+
+        {
+
+            if(!vist[it])
+
+            dfs(vist,adj,count,sum,it);
+
+        }
+
+        sum+=adj[node].size();
+
+        count++;
+
+    }
+
+  
+
+  
+
+    int findNumberOfGoodComponent(int V, vector<vector<int>>& adj) {
+
+       
+
+       vector<int>vist(V+1,0);
+
+       int ans=0;
+
+       for(int i=1;i<=V;i++)
+
+       {
+
+           int count=0,sum=0;
+
+           if(!vist[i]) 
+
+           {
+
+               dfs(vist,adj,count,sum,i);
+
+               if(sum/2==(count*(count-1))/2||sum==0) ans++;
+
+           }
+
+       }
+
+       
+
+      return ans;
+
+     
+
+    }
