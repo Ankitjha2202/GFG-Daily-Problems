@@ -1,0 +1,37 @@
+
+class Solution {
+  public:
+  bool isanagram(string s,string t){
+      sort(t.begin(),t.end());
+      return s==t;
+  }
+  Node convert(string t,vector<Node*> &res){
+        Node *ans = new Node(0);
+        Node *temp = ans;
+        for(int i=0; i<t.length(); i++){
+            Node *newNode = new Node(t[i]);
+            temp->next = newNode;
+            temp = newNode;
+        }
+        res.push_back(ans->next);
+  }
+    vector<Node*> findAnagrams(struct Node* head, string s) {
+        sort(s.begin(),s.end());
+        vector<Node*> res;
+        Node* j=head;
+        string ans="";
+        while(j!=NULL){
+            ans+=j->data;
+            if(ans.size()==s.size()){
+                if(isanagram(s,ans)){
+                    convert(ans,res);
+                    ans="";
+                }else{
+                    ans=ans.substr(1);
+                }
+            }
+            j=j->next;
+        }
+        return res;
+    }
+};
