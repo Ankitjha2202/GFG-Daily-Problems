@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    vector<int> solveQueries(int n, int num, vector<int> &a, vector<vector<int>> &q) {
+      vector<int> ans;
+       unordered_map<int , int> mp;
+        for(int i=0; i<n; i++){
+            int c=0;
+            for(int j=i; j<n; j++){
+                if(a[i]==a[j])c++;
+            }
+            mp[i]=c;
+        }
+        for(int i=0; i<num; i++){
+            int l=q[i][0] , r=q[i][1] , k=q[i][2] , c=0;
+            for(int j=l; j<=r; j++){
+                if(mp[j]==k) c++;
+            }
+            ans.push_back(c);
+        }
+        return ans;
+    }
+};
