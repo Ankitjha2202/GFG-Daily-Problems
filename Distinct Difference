@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    vector<int> getDistinctDifference(int n, vector<int> &a) {
+        unordered_map<int,int> mp;
+        vector<int> ans(n,0);
+        for(int i=0;i<n;i++){
+            ans[i]=mp.size();
+            mp[a[i]]++;
+        }
+        mp.clear();
+        vector<int> temp(n,0);
+        for(int j=n-1;j>=0;j--){
+            temp[j]=mp.size();
+            mp[a[j]]++;
+        }
+        vector<int> res(n,0);
+        for(int i=0;i<n;i++){
+            res[i]=(ans[i]-temp[i]);
+        }
+        return res;
+    }
+};
